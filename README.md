@@ -15,7 +15,7 @@ install.packages("minerva")
 ```
 * Development version
 ```r
-devtools::install_github('rsamantha/minerva')
+devtools::install_github('filosi/minerva')
 ```
 
 ## Usage
