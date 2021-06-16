@@ -29,7 +29,7 @@
 #' @references 
 #' D. Albanese, S. Riccadonna, C. Donati, P. Franceschi (2018)
 #' _A practical tool for Maximal Information Coefficient Analysis_
-#' GigaScience, 7, 4, \url{https://doi.org/10.1093/gigascience/giy032}
+#' GigaScience, 7, 4, \doi{10.1093/gigascience/giy032}
 #' @examples 
 #' data(Spellman)
 #' Spellman <- as.matrix(Spellman)

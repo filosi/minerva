@@ -148,7 +148,7 @@
 #' Science 334, 6062\cr
 #' \url{http://www.exploredata.net}\cr
 #' (SOM: Supplementary Online Material at
-#'   \url{http://www.sciencemag.org/content/suppl/2011/12/14/334.6062.1518.DC1})
+#'   \url{https://science.sciencemag.org/content/suppl/2011/12/14/334.6062.1518.DC1})
 #' 
 #' D. Albanese, M. Filosi, R. Visintainer, S. Riccadonna, G. Jurman,
 #' C. Furlanello. 
