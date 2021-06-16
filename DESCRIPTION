@@ -29,3 +29,4 @@ Repository: CRAN
 Date/Publication: 2013-01-07 17:53:58
 RoxygenNote: 7.1.1
 Encoding: UTF-8
+LazyData: true
