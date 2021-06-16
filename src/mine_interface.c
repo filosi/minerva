@@ -68,12 +68,12 @@ SEXP mineRonevar (SEXP x, SEXP y, SEXP alpha, SEXP C, SEXP eps, SEXP est, SEXP n
   PROTECT(res=allocVector(REALSXP,7));
   restmp=REAL(res);
     
-  param = (mine_parameter *) Calloc(1,mine_parameter);
+  param = (mine_parameter *) R_Calloc(1,mine_parameter);
   param->alpha=asReal(alpha);
   param->c=asReal(C);
   param->est=asInteger(est);
   
-  prob = (mine_problem *) Calloc(1,mine_problem);
+  prob = (mine_problem *) R_Calloc(1,mine_problem);
   prob->n=length(x);
   prob->x=REAL(x);
   prob->y=REAL(y);
@@ -95,8 +95,8 @@ SEXP mineRonevar (SEXP x, SEXP y, SEXP alpha, SEXP C, SEXP eps, SEXP est, SEXP n
   restmp[6]=mine_tic(minescore, nn);
   
   /* Free */
-  Free(prob);
-  Free(param);
+  R_Free(prob);
+  R_Free(param);
   mine_free_score(&minescore);
   UNPROTECT(3);
   return(res);
@@ -113,7 +113,7 @@ SEXP mineRall (SEXP x, SEXP nrx, SEXP ncx, SEXP alpha, SEXP C, SEXP eps, SEXP es
   mine_score *minescore;
   SEXP res, mydim, resmic, resmas, resmev, resmcn, resmicmr, resgmic, restic, names;
   
-  param = (mine_parameter *) Calloc(1,mine_parameter);
+  param = (mine_parameter *) R_Calloc(1,mine_parameter);
   param->alpha=asReal(alpha);
   param->c=asReal(C);
   param->est=asInteger(est);
@@ -128,9 +128,9 @@ SEXP mineRall (SEXP x, SEXP nrx, SEXP ncx, SEXP alpha, SEXP C, SEXP eps, SEXP es
   PROTECT(x=coerceVector(x,REALSXP));
   
   /* Initialize data matrix */
-  pointers = (double **) Calloc(cx, double *);
+  pointers = (double **) R_Calloc(cx, double *);
   for (i = 0; i<cx;i++){
-    pointers[i] = (double *) Calloc(rx, double);
+    pointers[i] = (double *) R_Calloc(rx, double);
     pointers[i] = &REAL(x)[i * rx];
   }
   
@@ -154,7 +154,7 @@ SEXP mineRall (SEXP x, SEXP nrx, SEXP ncx, SEXP alpha, SEXP C, SEXP eps, SEXP es
   SET_VECTOR_ELT(res, 6, restic);
   
   /* Set the mine_problem */
-  prob = (mine_problem *) Calloc(1,mine_problem);
+  prob = (mine_problem *) R_Calloc(1,mine_problem);
   prob->n=rx;
   
   for (i = 0; i<cx; i++){
@@ -227,9 +227,9 @@ SEXP mineRall (SEXP x, SEXP nrx, SEXP ncx, SEXP alpha, SEXP C, SEXP eps, SEXP es
   
   /* Free memeory */
   UNPROTECT(11);
-  Free(pointers);
-  Free(param);
-  Free(prob);
+  R_Free(pointers);
+  R_Free(param);
+  R_Free(prob);
   /* Return a named list of 4 matrix */
   return(res);
 }
