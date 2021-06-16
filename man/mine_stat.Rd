@@ -5,8 +5,17 @@
 \title{This is an helper function to compute one \code{mine} statistic.
 It take two vectors of the same dimension as an input.}
 \usage{
-mine_stat(x, y, alpha = 0.6, C = 15, est = "mic_approx",
-  measure = "mic", eps = NA_real_, p = -1, norm = FALSE)
+mine_stat(
+  x,
+  y,
+  alpha = 0.6,
+  C = 15,
+  est = "mic_approx",
+  measure = "mic",
+  eps = NA_real_,
+  p = -1,
+  norm = FALSE
+)
 }
 \arguments{
 \item{x}{Numeric Vector of size \code{n}}

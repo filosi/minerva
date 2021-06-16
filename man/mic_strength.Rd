@@ -4,8 +4,7 @@
 \alias{mic_strength}
 \title{Compute the association strengh}
 \usage{
-mic_strength(x, pval, alpha = NULL, C = 5, pthr = 0.05,
-  pval.col = NULL)
+mic_strength(x, pval, alpha = NULL, C = 5, pthr = 0.05, pval.col = NULL)
 }
 \arguments{
 \item{x}{a numeric matrix with N samples on the rows and M variables on the columns (NxM).}

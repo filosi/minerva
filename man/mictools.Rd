@@ -5,8 +5,7 @@
 \title{Function that implements the \code{mictools} pipeline.
 In particular it computes the null and observed distribution of the \code{tic_e} measure}
 \usage{
-mictools(x, alpha = 9, C = 5, seed = 0, nperm = 2e+05,
-  p.adjust.method = "BH")
+mictools(x, alpha = 9, C = 5, seed = 0, nperm = 2e+05, p.adjust.method = "BH")
 }
 \arguments{
 \item{x}{a numeric matrix with N samples on the rows and M variables on the columns (NxM).}
