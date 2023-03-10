@@ -592,6 +592,21 @@ check.inputs <- function(x,y,alpha,C,n.cores,var.thr,eps,est,na.rm,use, normaliz
 .allvsallparall <- function(x, alpha, C, n.cores,eps,est, normalization){
   f <- dim(x)[2]
   cl <- makeCluster(n.cores)
+  
+  #We need to save libPaths because the library() call will not run on cluster
+  #if minerva is installed to a non-standard location
+  #E.g. in containerized RSTudio setups with per-project packages
+  lp <- .libPaths()
+  #We need to manually export .onevsall and the library paths to the cluster
+  #Otherwise, it will fail because it wont be able to find them
+  clusterExport(cl, varlist = c(".onevsall", "lp"), envir=environment())
+  #"Manually" set library paths on the cluster side
+  clusterEvalQ(cl, c(.libPaths(lp)))
+  #Load minerva library on the cluster side, otherwise,
+  #C calls will not work
+  clusterEvalQ(cl, c(library(minerva)))
+  
+  
   res <- parLapply(cl,1:f,function(y,data,alpha,C,eps,est, normalization){
     return(.onevsall(x=data,idx=y,alpha=alpha,C=C,eps=eps,est=est,normalization=normalization, exclude=FALSE,diagonal=TRUE))},
                    data=x,alpha=alpha,C=C,eps=eps,est=est, normalization=normalization)
